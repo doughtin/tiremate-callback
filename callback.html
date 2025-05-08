@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head><meta charset="UTF-8" /><title>回傳 TireMate</title></head>
+<head><meta charset="UTF-8" /><title>回到 App</title></head>
 <body>
   <script>
-    const p = new URLSearchParams(location.search);
-    const code = p.get('code');
-    if (code) {
-      location.replace(`maintainanceapp://callback?code=${code}`);
-    }
+    (()=>{
+      const p = new URLSearchParams(location.search);
+      const code = p.get('code');
+      if (code) {
+        // 有 code 就秒跳
+        location.replace(`maintainanceapp://callback?code=${code}`);
+      }
+    })();
   </script>
-  <p>正在打開 TireMate App…</p>
+
+  <!-- code 不在 query 時，也會顯示這段文字 -->
+  <p>正在打開 TireMate App…<br/>
+     若自動跳轉失敗，請從 App 端再次執行登入。</p>
 </body>
 </html>
